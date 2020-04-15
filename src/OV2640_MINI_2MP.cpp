@@ -115,6 +115,10 @@ void OV2640_MINI_2MP::SetColorSaturation(Color_Saturation saturation)
 {
     switch (saturation)
     {
+    case Saturation4:
+        break;
+    case Saturation3:
+        break;
     case Saturation2:
 
         wrSensorReg8_8(0xff, 0x00);
@@ -156,6 +160,10 @@ void OV2640_MINI_2MP::SetColorSaturation(Color_Saturation saturation)
         wrSensorReg8_8(0x7d, 0x28);
         wrSensorReg8_8(0x7d, 0x28);
         break;
+    case Saturation_3:
+        break;
+    case Saturation_4:
+        break;
     }
 }
 
@@ -163,6 +171,10 @@ void OV2640_MINI_2MP::SetBrightness(Brightness brightness)
 {
     switch (brightness)
     {
+    case Brightness4:
+      break;
+    case Brightness3:
+      break;
     case Brightness2:
         wrSensorReg8_8(0xff, 0x00);
         wrSensorReg8_8(0x7c, 0x00);
@@ -203,6 +215,10 @@ void OV2640_MINI_2MP::SetBrightness(Brightness brightness)
         wrSensorReg8_8(0x7d, 0x00);
         wrSensorReg8_8(0x7d, 0x00);
         break;
+    case Brightness_3:
+      break;
+    case Brightness_4:
+      break;
     }
 }
 
@@ -210,6 +226,10 @@ void OV2640_MINI_2MP::SetContrast(Contrast contrast)
 {
     switch (contrast)
     {
+    case Contrast4:
+      break;
+    case Contrast3:
+      break;
     case Contrast2:
 
         wrSensorReg8_8(0xff, 0x00);
@@ -261,6 +281,10 @@ void OV2640_MINI_2MP::SetContrast(Contrast contrast)
         wrSensorReg8_8(0x7d, 0x34);
         wrSensorReg8_8(0x7d, 0x06);
         break;
+    case Contrast_3:
+      break;
+    case Contrast_4:
+      break;
     }
 }
 
@@ -332,6 +356,16 @@ void OV2640_MINI_2MP::SetSpecialEffects(Special_Effects effect)
         wrSensorReg8_8(0x7d, 0x80);
         wrSensorReg8_8(0x7d, 0x80);
         break;
+    case Sepia:
+      break;
+    case Overexposure:
+      break;
+    case Solarize:
+      break;
+    case Blueish:
+      break;
+    case Yellowish:
+      break;
     }
 }
 

@@ -118,7 +118,6 @@ uint8_t Camera::bus_read(int address)
 // Write 8 bit values to 8 bit register address
 int Camera::wrSensorRegs8_8(const struct sensor_reg reglist[])
 {
-	int err = 0;
 	uint16_t reg_addr = 0;
 	uint16_t reg_val = 0;
 	const struct sensor_reg *next = reglist;
@@ -126,7 +125,7 @@ int Camera::wrSensorRegs8_8(const struct sensor_reg reglist[])
 	{
 		reg_addr = pgm_read_word(&next->reg);
 		reg_val = pgm_read_word(&next->val);
-		err = wrSensorReg8_8(reg_addr, reg_val);
+		wrSensorReg8_8(reg_addr, reg_val);
 		next++;
 	}
 	return 1;
@@ -135,17 +134,15 @@ int Camera::wrSensorRegs8_8(const struct sensor_reg reglist[])
 // Write 16 bit values to 8 bit register address
 int Camera::wrSensorRegs8_16(const struct sensor_reg reglist[])
 {
-	int err = 0;
-	unsigned int reg_addr, reg_val;
+	uint16_t reg_addr = 0;
+	uint16_t reg_val = 0;
 	const struct sensor_reg *next = reglist;
 
 	while ((reg_addr != 0xff) | (reg_val != 0xffff))
 	{
 		reg_addr = pgm_read_word(&next->reg);
 		reg_val = pgm_read_word(&next->val);
-		err = wrSensorReg8_16(reg_addr, reg_val);
-		//  if (!err)
-		//return err;
+		wrSensorReg8_16(reg_addr, reg_val);
 		next++;
 	}
 	return 1;
@@ -154,18 +151,15 @@ int Camera::wrSensorRegs8_16(const struct sensor_reg reglist[])
 // Write 8 bit values to 16 bit register address
 int Camera::wrSensorRegs16_8(const struct sensor_reg reglist[])
 {
-	int err = 0;
-	unsigned int reg_addr;
-	unsigned char reg_val;
+	uint16_t reg_addr = 0;
+	uint16_t reg_val = 0;
 	const struct sensor_reg *next = reglist;
 
 	while ((reg_addr != 0xffff) | (reg_val != 0xff))
 	{
 		reg_addr = pgm_read_word(&next->reg);
 		reg_val = pgm_read_word(&next->val);
-		err = wrSensorReg16_8(reg_addr, reg_val);
-		//if (!err)
-		//return err;
+		wrSensorReg16_8(reg_addr, reg_val);
 		next++;
 	}
 	return 1;
@@ -174,16 +168,13 @@ int Camera::wrSensorRegs16_8(const struct sensor_reg reglist[])
 //I2C Array Write 16bit address, 16bit data
 int Camera::wrSensorRegs16_16(const struct sensor_reg reglist[])
 {
-	int err = 0;
 	unsigned int reg_addr, reg_val;
 	const struct sensor_reg *next = reglist;
 	reg_addr = pgm_read_word(&next->reg);
 	reg_val = pgm_read_word(&next->val);
 	while ((reg_addr != 0xffff) | (reg_val != 0xffff))
 	{
-		err = wrSensorReg16_16(reg_addr, reg_val);
-		//if (!err)
-		//   return err;
+		wrSensorReg16_16(reg_addr, reg_val);
 		next++;
 		reg_addr = pgm_read_word(&next->reg);
 		reg_val = pgm_read_word(&next->val);
